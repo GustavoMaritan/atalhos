@@ -1,1 +1,0 @@
-start /MAX E:\Programas\putty.exe -ssh 192.168.10.23 -l root -pw teste123
