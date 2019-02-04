@@ -13,7 +13,10 @@ module.exports = {
 }
 
 function execute(idCommand, options) {
+    console.log(idCommand)
+
     let comando = _getCommand(idCommand);
+    console.log(comando)
     options.prepare && options.prepare(comando);
     funcs[comando.type](comando, options);
 }

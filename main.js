@@ -45,9 +45,9 @@ function createWindow() {
 		movable: true,
 		frame: false,
 		transparent: true,
-		opacity: 0.7
+		opacity: 1
 	});
-
+	mainWindow.webContents.openDevTools();
 	mainWindow.loadURL(url.format({
 		pathname: path.join(__dirname, 'src/index.html'),
 		protocol: 'file:',
@@ -105,10 +105,9 @@ function createWindow() {
 	tray.setToolTip('Auto Pblish');
 	tray.setContextMenu(contextMenu);
 	//mainWindow.setKiosk(true) // TELA CHEIA
-	mainWindow.setAutoHideMenuBar(true)
-	mainWindow.setMenuBarVisibility(false)
+	mainWindow.setAutoHideMenuBar(true);
+	mainWindow.setMenuBarVisibility(false);
 
-	//mainWindow.webContents.openDevTools();
 
 	mainWindow.on('close', (e) => {
 		app.quit();
