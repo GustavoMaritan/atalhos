@@ -1,0 +1,135 @@
+.input-container-x {
+    flex-direction: row;
+}
+
+.input-container-x>.container-chk {
+    display: flex;
+    margin-right: 12px;
+}
+
+.title-mini>div>button {
+    background-color: transparent;
+    border: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.title-mini>.title-mini-menu {
+    width: 24px;
+}
+
+.title-mini>.move-windown {
+    width: 100%;
+    height: 18px;
+}
+
+.title-mini>.btn-container.btn-header {
+    flex-wrap: nowrap;
+    display: flex;
+    height: 20px;
+}
+
+.pane-content {
+    display: flex;
+    width: 100%;
+    padding-top: 33px;
+}
+
+.pane-content span{
+    color: white;
+}
+
+.resultados{
+    padding: 5px;
+    background: #3a3a3a;
+    overflow-x: hidden;
+    width: 100%;
+    color: white;
+}
+
+.pane-content-footer{
+    border: 1px solid black;
+    padding: 5px;
+    background: gray;
+    overflow: hidden;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+}
+
+.pane-content-body{
+    height: 100%;
+    display: flex;
+}
+
+.pane-content-body>.opcoes{
+    width: 40%;
+    padding: 10px;
+}
+
+.flex-direction-col{
+    flex-direction: column;
+    position: relative;
+}
+
+.input-container-button{
+    display: flex;
+}
+.input-container-button>input{
+    width: 100%;
+}
+.input-container-button>i{
+    color: white;
+}
+
+.input-container>ul{
+    color: white;
+}
+
+.extensoes{
+    padding: 5px
+}
+
+.extensoes>div{
+    display: flex;
+    color: white;
+    height: 20px;
+}
+.extensoes>div>label{
+    margin-left: 5px;
+}
+
+.input-container.button{
+    flex-direction: row-reverse;
+}
+
+.resultados>table{
+    width: 100%;
+    text-align: left;
+}
+.resultados>table input{
+    color: black;
+}
+.resultados>table>tbody td{
+    font-size: 14px;
+    padding: 3px;
+}
+
+.resultados>table>tbody td i{
+    font-size: 14px;
+    padding: 3px;
+}
+
+.resultados>table>tbody tr:nth-child(odd){
+    background: #444444;
+}
+
+.resultados>table>tbody tr:hover{
+    background: #585858;
+}
+
+.div-table{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -1,0 +1,107 @@
+/* .window{
+    background: transparent !important;
+} */
+
+.content{
+    display: flex;
+    flex-direction: column;
+}
+
+.content-body{
+    padding: 5px;
+}
+
+.content-body .item {
+    width: 100%;
+    height: 40px;
+    background: rgb(192, 40, 40);
+    display: flex;
+    flex-direction: row;
+    transition: all 1ms;
+    border-radius: 2px;
+    color: white;
+    cursor: pointer;
+}
+
+.content-body .item:hover {
+    background: rgba(192, 40, 40, 0.61);
+}
+
+.content-body .item.settings {
+    background: rebeccapurple;
+}
+
+.content-body .item.settings:hover {
+    background: rgba(102, 51, 153, 0.61);
+}
+
+.content-body .item * {
+    cursor: pointer;
+}
+
+.content-body .item>.img {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1ms;
+}
+
+.content-body .item>.display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1ms;
+}
+
+.content-body .item>.display>.text {
+    white-space: nowrap;
+}
+
+.content-body .item>.display>.text>span {
+    color: #5bd46d;
+    font-size: 9px;
+    margin-left: 10px;
+}
+
+.content-body .itens {
+    margin-top: 3px
+}
+
+.content-body .itens>.item {
+    margin-top: 1px
+}
+
+
+@media only screen and (max-width: 150px) {
+    /* .content-body .item>.display>.text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100px;
+    } */
+
+    .content-body {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+}
+
+@media only screen and (max-width: 70px) {
+    .content-body .item>.img {
+        width: 100%;
+    }
+
+    .content-body .item>.display {
+        display: none;
+    }
+}
+
+.move-windown {
+    -webkit-app-region: drag;
+}
+
+.move-windown {
+    width: 100%;
+    height: 18px;
+}
