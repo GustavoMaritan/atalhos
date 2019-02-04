@@ -2,15 +2,15 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
+	<meta charset="UTF-8" />
 	<title>d</title>
 
-	<link rel="stylesheet" href="./content/plugins/photon/css/photon.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelementplayer.css">
-	<link rel="stylesheet" href="./content/css/style.css">
-	<link rel="stylesheet" href="./content/css/spinners.css">
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="./content/plugins/photon/css/photon.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.6/mediaelementplayer.css" />
+	<link rel="stylesheet" href="./content/css/style.css" />
+	<link rel="stylesheet" href="./content/css/spinners.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 	<style>
 		.content-icon {
 			display: flex;
@@ -22,11 +22,30 @@
 		.content-icon>i {
 			font-size: 66px;
 		}
+
+		.content-move {
+			display: flex;
+			flex-direction: row;
+		}
+
+		.content-move>.minimize {
+			width: 26px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 18px;
+			color: gray;
+			cursor: pointer;
+		}
+
+		.content-move>.minimize>i {
+			font-size: 18px !important;
+			pointer-events: none;
+		}
 	</style>
 	<script>
 		window.$ = window.Jquery = require('jquery');
-		const
-			electron = require('electron'),
+		const electron = require('electron'),
 			remote = electron.remote,
 			ipcRenderer = electron.ipcRenderer,
 			app = require('./server/app'),
@@ -40,6 +59,9 @@
 		<div class="content">
 			<div class="content-move">
 				<div class="move-windown"></div>
+				<div class="minimize" onclick="cclose()">
+					<i class="material-icons min">remove</i>
+				</div>
 			</div>
 			<div class="content-body">
 				<div class="config">
@@ -68,7 +90,9 @@
 							<i class="material-icons">check</i>
 						</div>
 						<div class="display">
-							<div class="text">Merge Homolog <span></span></div>
+							<div class="text">
+								Merge Homolog <span></span>
+							</div>
 						</div>
 					</div>
 					<div class="item" data-id="3" onclick="exec(this)" title="Alfredo">
@@ -84,7 +108,9 @@
 							<i class="material-icons">check</i>
 						</div>
 						<div class="display">
-							<div class="text">Cumito Docs <span></span></div>
+							<div class="text">
+								Cumito Docs <span></span>
+							</div>
 						</div>
 					</div>
 					<div class="item" data-id="5" onclick="exec(this)" title="Open Docs">
@@ -100,33 +126,37 @@
 							<i class="material-icons">check</i>
 						</div>
 						<div class="display">
-							<div class="text">Open Sck_Api <span></span></div>
+							<div class="text">
+								Open Sck_Api <span></span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="content-icon" style="display:none">
-				<i class="material-icons" onclick="devTools()">check</i>
+				<i class="material-icons" onclick="oopen()">check</i>
 			</div>
 		</div>
 	</div>
-
 </body>
 
 <script>
-	// $('.window *').mouseover(function () {
-	// 	$('.content-icon').hide();
-	// 	$('.content-body').show();
-	// 	ipcRenderer.send('open', 600, 800);
-	// })
-
-	// $('.window *').mouseleave(function () {
-	// 	setTimeout(() => {
-	// 		$('.content-body').hide();
-	// 		$('.content-icon').show();
-	// 		ipcRenderer.send('close', 80, 70);
-	// 	},1000)
-	// })
+	//testando();
+	function testando() {
+		ipcRenderer.send('open', 600, 800);
+		ipcRenderer.send('openDevTools');
+	}
+	cclose();
+	function cclose() {
+		$('.content-body, .minimize').hide();
+		$('.content-icon').show();
+		ipcRenderer.send('close', 80, 70);
+	}
+	function oopen() {
+		$('.content-icon').hide();
+		$('.content-body, .minimize').show();
+		ipcRenderer.send('open', 240, 800);
+	}
 
 	function devTools() {
 		ipcRenderer.send('openDevTools');
@@ -136,40 +166,33 @@
 		min_width: 100,
 		max_width: 600,
 		open: false
-	}
-	//ipcRenderer.send('resize', 80, 70);
-	//ipcRenderer.send('resize', 600, 800);
-	ipcRenderer.send('resize', 240, 800);
+	};
 
 	function exec(obj) {
 		let id = $(obj).data('id');
 		$(obj).find('.img>i').addClass('loader');
-
 		app.exec(+id, {
 			prepare() {
-				$(obj).find('.display')
-					.find('span')
-					.html('Executando');
+				$(obj).find('.display').find('span').html('Executando');
+				// setTimeout(() => {
+				// 	close();
+				// }, 1000);
 			},
 			close() {
 				$(obj).find('.img>i').removeClass('loader');
-				$(obj).find('.display')
-					.find('span')
-					.empty();
+				$(obj).find('.display').find('span').empty();
 			}
 		});
 	}
 
 	function teste(width) {
 		width = !width ? (win.open ? win.max_width : win.min_width) : width;
-		console.log(width)
+		console.log(width);
 		setTimeout(() => {
 			width = win.open ? width - 2 : width + 2;
 			ipcRenderer.send('resize', width, 800);
-			if (win.open && width != win.min_width)
-				return teste(width);
-			if (!win.open && width != win.max_width)
-				return teste(width);
+			if (win.open && width != win.min_width) return teste(width);
+			if (!win.open && width != win.max_width) return teste(width);
 			win.open = !win.open;
 		});
 	}
@@ -186,10 +209,8 @@
 
 	function maximizeWindow() {
 		const window = remote.getCurrentWindow();
-		if (window.isMaximized())
-			window.restore();
-		else
-			window.maximize();
+		if (window.isMaximized()) window.restore();
+		else window.maximize();
 	}
 </script>
 

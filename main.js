@@ -22,17 +22,6 @@ app.showExitPrompt = true
 let mainWindow,
 	iconPath = 'resources/icon3.ico';
 
-function newWindow() {
-	new BrowserWindow({
-		titleBarStyle: 'hidden',
-		width: 500,
-		minWidth: 0,
-		height: 200,
-		minHeight: 0,
-		darkTheme: true
-	});
-}
-
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		titleBarStyle: 'hidden',
@@ -40,14 +29,17 @@ function createWindow() {
 		minWidth: 0,
 		height: 800,
 		minHeight: 0,
+		x: 0,
+		y: 0,
 		icon: __dirname + '/' + iconPath,
 		darkTheme: true,
 		movable: true,
 		frame: false,
 		transparent: true,
-		opacity: 1
+		opacity: 1,
+		alwaysOnTop: true
 	});
-	mainWindow.webContents.openDevTools();
+	//mainWindow.webContents.openDevTools();
 	mainWindow.loadURL(url.format({
 		pathname: path.join(__dirname, 'src/index.html'),
 		protocol: 'file:',
@@ -107,7 +99,6 @@ function createWindow() {
 	//mainWindow.setKiosk(true) // TELA CHEIA
 	mainWindow.setAutoHideMenuBar(true);
 	mainWindow.setMenuBarVisibility(false);
-
 
 	mainWindow.on('close', (e) => {
 		app.quit();
