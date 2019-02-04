@@ -1,5 +1,5 @@
 {
-  "name": "palavra-chave",
+  "name": "atalhos",
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
@@ -13,12 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GustavoMaritan/palavra-chave.git"
+    "url": "git+https://github.com/GustavoMaritan/atalhos.git"
   },
   "bugs": {
-    "url": "https://github.com/GustavoMaritan/palavra-chave/issues"
+    "url": "https://github.com/GustavoMaritan/atalhos/issues"
   },
-  "homepage": "https://github.com/GustavoMaritan/palavra-chave#readme",
+  "homepage": "https://github.com/GustavoMaritan/atalhos#readme",
   "keywords": [],
   "author": "Gustavo Maritan <gustavomaritan@gmail.com>",
   "license": "MIT",
