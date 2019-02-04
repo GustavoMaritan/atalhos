@@ -8,6 +8,11 @@ const _path_config = './configs/config.json';
 const _path_user = './configs/user';
 const _types = ['bat', 'spawn', 'file'];
 
+
+spawn('cmd.exe', ['/C', ''], {
+
+})
+
 module.exports = {
     exec: execute
 }

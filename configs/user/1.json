@@ -80,6 +80,22 @@
 				"echo Enviado com sucesso.",
 				"SLEEP 3"
 			]
+		},
+		{
+			"id": 5,
+			"name": "Open Docs",
+			"type": "spawn",
+			"descricao": "",
+			"cwd": "E:\\Projetos\\bitbucket\\Momentum\\sck_documentacoes",
+			"comandos": [["code", "."]]
+		},
+		{
+			"id": 6,
+			"name": "Open Sck_Api",
+			"type": "spawn",
+			"descricao": "",
+			"cwd": "E:\\Projetos\\bitbucket\\Momentum\\sck_api",
+			"comandos": [["code", "."]]
 		}
 	]
 }
