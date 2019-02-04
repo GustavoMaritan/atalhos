@@ -4,3 +4,5 @@ logs
 installer
 *win32-x64
 configs
+bck_configs
+package-lock.json
