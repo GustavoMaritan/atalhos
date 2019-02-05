@@ -1,16 +1,14 @@
+const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const { spawn } = require('child_process');
-const _path_config = './configs/config.json';
-const _path_user = './configs/user';
-const _types = ['bat', 'spawn', 'file'];
+const config = require('./config');
 
 module.exports = {
 	exec: execute
 };
 
 function execute(idCommand, options) {
-	let comando = _getCommand(idCommand);
+	let comando = config.getCommand(idCommand);
 	options.prepare && options.prepare(comando);
 	funcs[comando.type](comando, options);
 }
@@ -93,30 +91,4 @@ function _spawn(option) {
 	ls.on('close', code => {
 		option.close && option.close(code);
 	});
-}
-
-function _getConfig() {
-	let conf = fs.readFileSync(_path_config, 'utf8');
-	if (!conf) return console.log('Configuração não encontrada.');
-	return JSON.parse(conf);
-}
-
-function _getUserConfig(idCommand) {
-	let conf = fs.readFileSync(
-		path.join(_path_user, `${idCommand}.json`),
-		'utf8'
-	);
-	if (!conf) return console.log('Configuração usuário não encontrada.');
-	return JSON.parse(conf);
-}
-
-function _getCommand(idCommand) {
-	let conf = _getConfig();
-	let userConf = _getUserConfig(conf.configOn);
-	let command = userConf.itens.find(x => x.id == idCommand);
-	if (!command) {
-		console.log('Comando não encontrado.');
-		return;
-	}
-	return command;
 }

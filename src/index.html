@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<title>d</title>
+	<title>Atalhos</title>
 
 	<link rel="stylesheet" href="./content/plugins/photon/css/photon.css" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
@@ -28,19 +28,28 @@
 			flex-direction: row;
 		}
 
-		.content-move>.minimize {
-			width: 26px;
+		.content-move>div.btn {
 			display: flex;
 			justify-content: center;
 			align-items: center;
 			height: 18px;
-			color: gray;
+			color: rgb(156, 156, 156);
 			cursor: pointer;
 		}
 
-		.content-move>.minimize>i {
+		.content-move>div.btn>div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.content-move>div.btn>div:hover {
+			color: rgb(236, 236, 236);
+		}
+
+		.content-move>div.btn>div>i {
 			font-size: 18px !important;
-			pointer-events: none;
+			cursor: pointer;
 		}
 	</style>
 	<script>
@@ -49,6 +58,7 @@
 			remote = electron.remote,
 			ipcRenderer = electron.ipcRenderer,
 			app = require('./server/app'),
+			html = require('./server/html'),
 			dialog = remote.dialog,
 			window1 = remote.getCurrentWindow();
 	</script>
@@ -59,8 +69,13 @@
 		<div class="content">
 			<div class="content-move">
 				<div class="move-windown"></div>
-				<div class="minimize" onclick="cclose()">
-					<i class="material-icons min">remove</i>
+				<div class="btn">
+					<div class="min" onclick="minimize()">
+						<i class="material-icons">remove</i>
+					</div>
+					<div class="close" onclick="closeWindow()">
+						<i class="material-icons">clear</i>
+					</div>
 				</div>
 			</div>
 			<div class="content-body">
@@ -70,94 +85,38 @@
 							<i class="material-icons">settings</i>
 						</div>
 						<div class="display" title="Configuracoes dasdas">
-							<div class="text">Configuracoes dasdas</div>
+							<div class="text">Configuracoes</div>
 						</div>
 					</div>
 				</div>
-				<div class="itens">
-					<div class="item" data-id="1" onclick="exec(this)" title="Palavra Chave">
-						<div class="img">
-							<i class="material-icons">check</i>
-						</div>
-						<div class="display">
-							<div class="text">
-								Palavra Chave <span></span>
-							</div>
-						</div>
-					</div>
-					<div class="item" data-id="2" onclick="exec(this)" title="Merge Homolog">
-						<div class="img">
-							<i class="material-icons">check</i>
-						</div>
-						<div class="display">
-							<div class="text">
-								Merge Homolog <span></span>
-							</div>
-						</div>
-					</div>
-					<div class="item" data-id="3" onclick="exec(this)" title="Alfredo">
-						<div class="img">
-							<i class="material-icons">check</i>
-						</div>
-						<div class="display">
-							<div class="text">Alfredo <span></span></div>
-						</div>
-					</div>
-					<div class="item" data-id="4" onclick="exec(this)" title="Cumito Docs">
-						<div class="img">
-							<i class="material-icons">check</i>
-						</div>
-						<div class="display">
-							<div class="text">
-								Cumito Docs <span></span>
-							</div>
-						</div>
-					</div>
-					<div class="item" data-id="5" onclick="exec(this)" title="Open Docs">
-						<div class="img">
-							<i class="material-icons">check</i>
-						</div>
-						<div class="display">
-							<div class="text">Open Docs <span></span></div>
-						</div>
-					</div>
-					<div class="item" data-id="6" onclick="exec(this)" title="Open Sck_Api">
-						<div class="img">
-							<i class="material-icons">check</i>
-						</div>
-						<div class="display">
-							<div class="text">
-								Open Sck_Api <span></span>
-							</div>
-						</div>
-					</div>
-				</div>
+				<div class="itens"></div>
 			</div>
 			<div class="content-icon" style="display:none">
-				<i class="material-icons" onclick="oopen()">check</i>
+				<i class="material-icons" onclick="maximize()">check</i>
 			</div>
 		</div>
 	</div>
 </body>
 
 <script>
-	//testando();
+	//minimize();
+	html.setItens();
+
+	testando();
 	function testando() {
 		ipcRenderer.send('open', 600, 800);
 		ipcRenderer.send('openDevTools');
 	}
-	cclose();
-	function cclose() {
+	function minimize() {
 		$('.content-body, .minimize').hide();
 		$('.content-icon').show();
 		ipcRenderer.send('close', 80, 70);
 	}
-	function oopen() {
+	function maximize() {
 		$('.content-icon').hide();
 		$('.content-body, .minimize').show();
 		ipcRenderer.send('open', 240, 800);
 	}
-
 	function devTools() {
 		ipcRenderer.send('openDevTools');
 	}

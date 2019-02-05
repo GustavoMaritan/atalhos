@@ -20,9 +20,33 @@ const fs = require('fs')
 let isQuiting = false;
 app.showExitPrompt = true
 let mainWindow,
+	mainConfig,
 	iconPath = 'resources/icon3.ico';
 
+function configWindown() {
+	mainConfig = new BrowserWindow({
+		width: 600,
+		minWidth: 0,
+		height: 800,
+		minHeight: 0,
+		icon: __dirname + '/' + iconPath,
+		opacity: 1,
+	});
+	mainConfig.loadURL(url.format({
+		pathname: path.join(__dirname, 'src/index-config.html'),
+		protocol: 'file:',
+		slashes: true
+	}));
+
+	mainConfig.on('close', (e) => {
+		mainConfig = null;
+	})
+	mainConfig.webContents.openDevTools();
+}
+
 function createWindow() {
+	configWindown();
+	return
 	mainWindow = new BrowserWindow({
 		titleBarStyle: 'hidden',
 		width: 600,
@@ -46,6 +70,7 @@ function createWindow() {
 		slashes: true
 	}));
 
+
 	ipcMain.on('open', function (e, x, y) {
 		mainWindow.setSize(x, y);
 		mainWindow.setOpacity(1);
@@ -57,7 +82,8 @@ function createWindow() {
 	});
 
 	ipcMain.on('openDevTools', function (e, x, y) {
-		mainWindow.webContents.openDevTools()
+		mainWindow.webContents.openDevTools();
+		mainWindow.setAlwaysOnTop(false);
 	});
 
 	function notifyState() {

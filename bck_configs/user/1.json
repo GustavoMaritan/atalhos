@@ -1,0 +1,73 @@
+{
+    "id": 1,
+    "name": "",
+    "itens": [
+        {
+            "id": 1,
+            "name": "Exec Palavra Chave",
+            "icon": "check",
+            "descricao": "",
+            "cwd": null,
+            "type": "bat",
+            "comandos": [
+                "@echo off",
+                "pause",
+                "cd\\",
+                "cd C:\\Gustavo\\Projetos\\palavra-chave",
+                "electron ."
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Exec Palavra Chave",
+            "icon": "check",
+            "descricao": "",
+            "cwd": "C:\\Gustavo\\Projetos\\palavra-chave",
+            "type": "spawn",
+            "comandos": [
+                [
+                    "electron",
+                    "."
+                ]
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Merge Homolog",
+            "icon": "check",
+            "descricao": "",
+            "cwd": "C:\\Gustavo\\Projetos\\palavra-chave",
+            "type": "spawn",
+            "comandos": [
+                [
+                    "git",
+                    "add",
+                    "."
+                ],
+                [
+                    "git",
+                    "commit",
+                    "-m",
+                    "Message"
+                ],
+                [
+                    "git",
+                    "pull"
+                ],
+                [
+                    "git",
+                    "push"
+                ]
+            ]
+        },
+        {
+            "id": 4,
+            "name": "VsCode",
+            "icon": "check",
+            "descricao": "",
+            "cwd": "C:\\Program Files\\Git",
+            "file": "git-bash.exe",
+            "type": "file"
+        }
+    ]
+}
