@@ -2,15 +2,25 @@ const { spawn } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const config = require('./config');
+const uuid = require('uuid/v4');
 
 module.exports = {
-	exec: execute
+	exec: execute,
+	salvar
 };
 
 function execute(idCommand, options) {
 	let comando = config.getCommand(idCommand);
 	options.prepare && options.prepare(comando);
 	funcs[comando.type](comando, options);
+}
+
+function salvar(obj) {
+	let userConfig = config.getUserConfig();
+	obj.id = uuid();
+	obj.comandos = obj.comandos.map(x => x.split(' '));
+	userConfig.itens.push(obj);
+	config.updateUserConfig(userConfig);
 }
 
 const funcs = {

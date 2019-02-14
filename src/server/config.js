@@ -8,7 +8,8 @@ module.exports = {
     types,
     getCommand,
     getUserConfig,
-    getConfig
+    getConfig,
+    updateUserConfig
 };
 
 function getConfig() {
@@ -32,4 +33,12 @@ function getCommand(idCommand) {
         return;
     }
     return command;
+}
+
+function updateUserConfig(userConf) {
+    let conf = getConfig();
+    fs.writeFileSync(
+        path.join(_path_user, `${conf.configOn}.json`),
+        JSON.stringify(userConf, undefined, 4)
+    );
 }

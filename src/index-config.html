@@ -73,6 +73,15 @@
             display: flex;
             flex-direction: column;
         }
+
+        div.button{
+            width: 100%;
+            display: flex;
+        }
+
+        div.button.right{
+            flex-direction: row-reverse;
+        }
     </style>
 </head>
 
@@ -87,17 +96,17 @@
                 <div class="col">
                     <div class="input col-m">
                         <span>Nome</span>
-                        <input type="text">
+                        <input type="text" id="txtName">
                     </div>
                     <div class="input col-m">
                         <span>Icon</span>
-                        <input type="text">
+                        <input type="text" id="txtIcon">
                     </div>
                 </div>
                 <div class="col">
                     <div class="input col-m">
                         <span>Descrição</span>
-                        <input type="text">
+                        <input type="text" id="txtDescricao">
                     </div>
                     <div class="input col-m">
                         <span>Tipo</span>
@@ -110,11 +119,15 @@
                 </div>
                 <div class="input" data-local style="display: none">
                     <span>Local(cwd)</span>
-                    <input type="text" name="" id="">
+                    <input type="text" id="txtLocal">
                 </div>
                 <div class="input" data-bat>
                     <span>comandos</span>
-                    <textarea name="" id="" placeholder=""></textarea>
+                    <textarea id="txtComandos"></textarea>
+                </div>
+                <div class="button right">
+                    <button>Cancelar</button>
+                    <button onclick="salvar()">Salvar</button>
                 </div>
             </div>
         </div>
@@ -138,13 +151,23 @@
                 break;
         }
     });
-
     let userConfig = config.getUserConfig();
-    console.log(userConfig)
 
     userConfig.itens.forEach(x => {
         $('ul.itens').append(`<li data-id="${x.id}">${x.name}</li>`);
     });
+
+    function salvar() {
+        let obj = {
+            name: $('#txtName').val(),
+            icon: $('#txtIcon').val(),
+            descricao: $('#txtDescricao').val(),
+            type: $('#sel-tipos').val(),
+            cwd: $('#txtLocal').val(),
+            comandos: $('#txtComandos').val().split('\n')
+        }
+        app.salvar(obj);
+    }
 
 </script>
 
