@@ -18,7 +18,8 @@ function execute(idCommand, options) {
 function salvar(obj) {
 	let userConfig = config.getUserConfig();
 	obj.id = uuid();
-	obj.comandos = obj.comandos.map(x => x.split(' '));
+	if (obj.type == 'spawn')
+		obj.comandos = obj.comandos.map(x => x.split(' '));
 	userConfig.itens.push(obj);
 	config.updateUserConfig(userConfig);
 }

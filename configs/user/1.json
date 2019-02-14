@@ -176,6 +176,17 @@
                 ]
             ],
             "id": "ba17f66f-adb8-4ed2-9716-3ee488d7c8d4"
+        },
+        {
+            "name": "asdasd",
+            "icon": "iiii",
+            "descricao": "ddddd",
+            "type": "bat",
+            "cwd": "",
+            "comandos": [
+                "cd\\"
+            ],
+            "id": "3535d2e6-15ad-44e0-b14c-41b207ded8ac"
         }
     ]
 }
