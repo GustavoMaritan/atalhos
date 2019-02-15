@@ -17,6 +17,8 @@ if (handleSquirrelEvent(app)) { return; }
 const path = require('path')
 const url = require('url')
 const fs = require('fs')
+const html = require('./src/server/html');
+
 let isQuiting = false;
 app.showExitPrompt = true
 let mainWindow,
@@ -39,14 +41,17 @@ function configWindown() {
 	}));
 
 	mainConfig.on('close', (e) => {
+		reload();
 		mainConfig = null;
-	})
-	mainConfig.webContents.openDevTools();
+	});
+	//mainConfig.webContents.openDevTools();
+}
+
+function reload() {
+	mainWindow.reload();
 }
 
 function createWindow() {
-	configWindown();
-	return
 	mainWindow = new BrowserWindow({
 		titleBarStyle: 'hidden',
 		width: 600,
@@ -70,7 +75,6 @@ function createWindow() {
 		slashes: true
 	}));
 
-
 	ipcMain.on('open', function (e, x, y) {
 		mainWindow.setSize(x, y);
 		mainWindow.setOpacity(1);
@@ -84,6 +88,10 @@ function createWindow() {
 	ipcMain.on('openDevTools', function (e, x, y) {
 		mainWindow.webContents.openDevTools();
 		mainWindow.setAlwaysOnTop(false);
+	});
+
+	ipcMain.on('add', function (e, x, y) {
+		configWindown();
 	});
 
 	function notifyState() {

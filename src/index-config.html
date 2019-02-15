@@ -126,7 +126,7 @@
                     <textarea id="txtComandos"></textarea>
                 </div>
                 <div class="button right">
-                    <button>Cancelar</button>
+                    <button onclick="cancelar()">Cancelar</button>
                     <button onclick="salvar()">Salvar</button>
                 </div>
             </div>
@@ -167,6 +167,15 @@
             comandos: $('#txtComandos').val().split('\n')
         }
         app.salvar(obj);
+
+        const window = remote.getCurrentWindow();
+        window.close();
+    }
+
+    function cancelar() {
+        $('input, textarea').val('');
+        $('#sel-tipos option[value=bat]').prop('selected', true);
+        $('#sel-tipos').trigger('change');
     }
 
 </script>

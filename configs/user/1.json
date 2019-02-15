@@ -119,74 +119,13 @@
             ]
         },
         {
-            "name": "nnnnn",
-            "icon": "iiiii",
-            "descricao": "ddddd",
-            "type": "spawn",
-            "cwd": "llllll",
-            "comandos": [
-                [
-                    "git",
-                    "add",
-                    "."
-                ],
-                [
-                    "git",
-                    "commit",
-                    "-m",
-                    "\"asdlaskdjlasdkj\""
-                ],
-                [
-                    "git",
-                    "pull"
-                ],
-                [
-                    "git",
-                    "push"
-                ]
-            ],
-            "id": "5ac24286-9b48-441f-ac79-1336c559ea75"
-        },
-        {
-            "name": "teste",
+            "name": "TT2",
             "icon": "",
             "descricao": "",
-            "type": "bat",
-            "cwd": "",
-            "comandos": [
-                [
-                    "asdasd"
-                ],
-                [
-                    "asdasd",
-                    "",
-                    "dasd",
-                    "asd"
-                ],
-                [
-                    "dadasd",
-                    ""
-                ],
-                [
-                    "a",
-                    "sdasdas",
-                    "ada",
-                    "das",
-                    "asdda"
-                ]
-            ],
-            "id": "ba17f66f-adb8-4ed2-9716-3ee488d7c8d4"
-        },
-        {
-            "name": "asdasd",
-            "icon": "iiii",
-            "descricao": "ddddd",
-            "type": "bat",
-            "cwd": "",
-            "comandos": [
-                "cd\\"
-            ],
-            "id": "3535d2e6-15ad-44e0-b14c-41b207ded8ac"
+            "type": "file",
+            "cwd": "C:\\Users\\gmari\\Downloads\\",
+            "id": "631d834d-a924-4771-825a-9db3650fc329",
+            "file": "teste.txt"
         }
     ]
 }

@@ -79,12 +79,12 @@
 				</div>
 			</div>
 			<div class="content-body">
-				<div class="config">
+				<div class="config" onclick="add()">
 					<div class="item settings" onclick="">
 						<div class="img">
 							<i class="material-icons">settings</i>
 						</div>
-						<div class="display" title="Configuracoes dasdas">
+						<div class="display" title="Configuracoes">
 							<div class="text">Configuracoes</div>
 						</div>
 					</div>
@@ -127,15 +127,16 @@
 		open: false
 	};
 
+	function add() {
+		ipcRenderer.send('add');
+	}
+
 	function exec(obj) {
 		let id = $(obj).data('id');
 		$(obj).find('.img>i').addClass('loader');
-		app.exec(+id, {
+		app.exec(id, {
 			prepare() {
 				$(obj).find('.display').find('span').html('Executando');
-				// setTimeout(() => {
-				// 	close();
-				// }, 1000);
 			},
 			close() {
 				$(obj).find('.img>i').removeClass('loader');

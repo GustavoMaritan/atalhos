@@ -20,6 +20,12 @@ function salvar(obj) {
 	obj.id = uuid();
 	if (obj.type == 'spawn')
 		obj.comandos = obj.comandos.map(x => x.split(' '));
+	if (obj.type == 'file') {
+		let _caminho = obj.cwd.split('\\');
+		obj.file = _caminho.pop();
+		obj.cwd = _caminho.join('\\') + '\\';
+		obj.comandos = undefined;
+	}
 	userConfig.itens.push(obj);
 	config.updateUserConfig(userConfig);
 }
