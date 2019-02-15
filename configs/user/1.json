@@ -1,131 +1,159 @@
 {
-    "id": 1,
-    "itens": [
-        {
-            "id": 1,
-            "name": "Palavra Chave",
-            "type": "spawn",
-            "icon": "vpn_key",
-            "descricao": "Encontra palavras dentro de arquivos.",
-            "cwd": "E:\\Projetos\\z-testes\\palavra-chave",
-            "comandos": [
-                [
-                    "electron",
-                    "."
-                ]
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Merge Homolog",
-            "type": "bat",
-            "icon": "merge_type",
-            "descricao": "",
-            "comandos": [
-                "@echo off",
-                "cd\\",
-                "e:",
-                "cd E:\\Projetos\\bitbucket\\Momentum\\sck_api",
-                ":: __________________________________________________________",
-                "",
-                ":: GET CURRENT BRANCH",
-                "git branch | grep \\* | cut -d ' ' -f2 > C:\\Users\\Gustavo\\Desktop\\curr_com.txt",
-                "set /p curr_com=<C:\\Users\\Gustavo\\Desktop\\curr_com.txt",
-                "del C:\\Users\\Gustavo\\Desktop\\curr_com.txt /f /s >nul",
-                ":: __________________________________________________________",
-                "",
-                ":: CONFIRMA MERGE",
-                "clear",
-                "printf  \\n",
-                "echo Merge '%curr_com%' para 'homolog'",
-                "printf  \\n",
-                "echo Confirmar merge? para cancelar 'Ctrl+C'",
-                "printf  \\n",
-                "pause >nul",
-                ":: __________________________________________________________",
-                "",
-                ":: EXECUTA MERGE",
-                "clear",
-                "git checkout homolog",
-                "git pull",
-                "git merge %curr_com%",
-                "git push",
-                "git checkout %curr_com%",
-                "",
-                "printf  \\n",
-                "echo *** Homolog atualizado. ***",
-                ":: __________________________________________________________",
-                "",
-                "SLEEP 3"
-            ]
-        },
-        {
-            "id": 3,
-            "name": "Alfredo",
-            "type": "bat",
-            "icon": "computer",
-            "descricao": "",
-            "comandos": [
-                "start /MAX E:\\Programas\\putty.exe -ssh 192.168.10.23 -l root -pw teste123"
-            ]
-        },
-        {
-            "id": 4,
-            "name": "Cumito Docs",
-            "type": "bat",
-            "icon": "check",
-            "descricao": "",
-            "comandos": [
-                "@echo off",
-                "echo Iniciando cumito Documentações.",
-                "",
-                "cd\\",
-                "e:",
-                "cd E:\\Projetos\\bitbucket\\Momentum\\sck_documentacoes",
-                "",
-                "git pull",
-                "git cumito Documentacoes",
-                "",
-                "echo Enviado com sucesso.",
-                "SLEEP 3"
-            ]
-        },
-        {
-            "id": 5,
-            "name": "Open Docs",
-            "type": "spawn",
-            "icon": "folder_open",
-            "descricao": "",
-            "cwd": "E:\\Projetos\\bitbucket\\Momentum\\sck_documentacoes",
-            "comandos": [
-                [
-                    "code",
-                    "."
-                ]
-            ]
-        },
-        {
-            "id": 6,
-            "name": "Open Sck_Api",
-            "type": "spawn",
-            "descricao": "",
-            "icon": "account_balance",
-            "cwd": "E:\\Projetos\\bitbucket\\Momentum\\sck_api",
-            "comandos": [
-                [
-                    "code",
-                    "."
-                ]
-            ]
-        },
-        {
-            "name": "TT2",
-            "icon": "",
-            "descricao": "",
-            "type": "file",
-            "cwd": "C:\\Users\\gmari\\Downloads\\",
-            "id": "631d834d-a924-4771-825a-9db3650fc329",
-            "file": "teste.txt"
-        }
-    ]
+	"id": 1,
+	"itens": [
+		{
+			"id": 1,
+			"name": "Palavra Chave",
+			"type": "spawn",
+			"icon": "vpn_key",
+			"descricao": "Encontra palavras dentro de arquivos.",
+			"cwd": "E:\\Projetos\\z-testes\\palavra-chave",
+			"comandos": [
+				[
+					"electron",
+					"."
+				]
+			]
+		},
+		{
+			"id": 2,
+			"name": "Merge Homolog",
+			"type": "bat",
+			"icon": "merge_type",
+			"descricao": "",
+			"comandos": [
+				"@echo off",
+				"cd\\",
+				"e:",
+				"cd E:\\Projetos\\bitbucket\\Momentum\\sck_api",
+				":: __________________________________________________________",
+				"",
+				":: GET CURRENT BRANCH",
+				"git branch | grep \\* | cut -d ' ' -f2 > C:\\Users\\Gustavo\\Desktop\\curr_com.txt",
+				"set /p curr_com=<C:\\Users\\Gustavo\\Desktop\\curr_com.txt",
+				"del C:\\Users\\Gustavo\\Desktop\\curr_com.txt /f /s >nul",
+				":: __________________________________________________________",
+				"",
+				":: CONFIRMA MERGE",
+				"clear",
+				"printf  \\n",
+				"echo Merge '%curr_com%' para 'homolog'",
+				"printf  \\n",
+				"echo Confirmar merge? para cancelar 'Ctrl+C'",
+				"printf  \\n",
+				"pause >nul",
+				":: __________________________________________________________",
+				"",
+				":: EXECUTA MERGE",
+				"clear",
+				"git checkout homolog",
+				"git pull",
+				"git merge %curr_com%",
+				"git push",
+				"git checkout %curr_com%",
+				"",
+				"printf  \\n",
+				"echo *** Homolog atualizado. ***",
+				":: __________________________________________________________",
+				"",
+				"SLEEP 3"
+			]
+		},
+		{
+			"id": 3,
+			"name": "Alfredo",
+			"type": "bat",
+			"icon": "computer",
+			"descricao": "",
+			"comandos": [
+				"start /MAX E:\\Programas\\putty.exe -ssh 192.168.10.23 -l root -pw teste123"
+			]
+		},
+		{
+			"id": 4,
+			"name": "Cumito Docs",
+			"type": "bat",
+			"icon": "check",
+			"descricao": "",
+			"comandos": [
+				"@echo off",
+				"echo Iniciando cumito Documentações.",
+				"",
+				"cd\\",
+				"e:",
+				"cd E:\\Projetos\\bitbucket\\Momentum\\sck_documentacoes",
+				"",
+				"git pull",
+				"git cumito Documentacoes",
+				"",
+				"echo Enviado com sucesso.",
+				"SLEEP 3"
+			]
+		},
+		{
+			"id": 5,
+			"name": "Open Docs",
+			"type": "spawn",
+			"icon": "folder_open",
+			"descricao": "",
+			"cwd": "E:\\Projetos\\bitbucket\\Momentum\\sck_documentacoes",
+			"comandos": [
+				[
+					"code",
+					"."
+				]
+			]
+		},
+		{
+			"id": 6,
+			"name": "Open Sck_Api",
+			"type": "spawn",
+			"descricao": "",
+			"icon": "account_balance",
+			"cwd": "E:\\Projetos\\bitbucket\\Momentum\\sck_api",
+			"comandos": [
+				[
+					"code",
+					"."
+				]
+			]
+		},
+		{
+			"id": 7,
+			"name": "Criptografias",
+			"type": "spawn",
+			"descricao": "",
+			"icon": "vpn_key",
+			"cwd": "C:\\Users\\Gustavo\\Desktop\\Desenvolvimento\\ConversaoNode\\kasilSecurity",
+			"comandos": [
+				[
+					"code",
+					"."
+				]
+			]
+		},
+		{
+			"id": 8,
+			"name": "Atalho Proj",
+			"type": "spawn",
+			"descricao": "SIm, eu mesmo me abro.",
+			"icon": "vpn_key",
+			"cwd": "E:\\Projetos\\electron\\atalhos",
+			"comandos": [
+				[
+					"code",
+					"."
+				]
+			]
+		},
+		{
+			"id": 9,
+			"name": "O que foi feito",
+			"type": "file",
+			"descricao": "Txt, conversao node.",
+			"icon": "vpn_key",
+			"file": "O que foi feito.txt",
+			"cwd": "C:\\Users\\Gustavo\\Desktop\\Desenvolvimento\\ConversaoNode\\OqueFoiFeito"
+		}
+	]
 }
