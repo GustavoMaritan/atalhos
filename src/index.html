@@ -99,10 +99,10 @@
 </body>
 
 <script>
-	//minimize();
+	minimize();
 	html.setItens();
 
-	testando();
+	//testando();
 	function testando() {
 		ipcRenderer.send('open', 600, 800);
 		ipcRenderer.send('openDevTools');
@@ -129,6 +129,7 @@
 
 	function add() {
 		ipcRenderer.send('add');
+		minimize();
 	}
 
 	function exec(obj) {

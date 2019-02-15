@@ -27,6 +27,7 @@ let mainWindow,
 
 function configWindown() {
 	mainConfig = new BrowserWindow({
+		titleBarStyle: 'hidden',
 		width: 600,
 		minWidth: 0,
 		height: 800,
@@ -44,6 +45,7 @@ function configWindown() {
 		reload();
 		mainConfig = null;
 	});
+	mainConfig.setMenu(null);
 	//mainConfig.webContents.openDevTools();
 }
 
@@ -58,8 +60,8 @@ function createWindow() {
 		minWidth: 0,
 		height: 800,
 		minHeight: 0,
-		x: 0,
-		y: 0,
+		x: 25,
+		y: 15,
 		icon: __dirname + '/' + iconPath,
 		darkTheme: true,
 		movable: true,
