@@ -99,10 +99,12 @@
 </body>
 
 <script>
-	minimize();
+	//minimize();
 	html.setItens();
 
-	//testando();
+	console.log($('body').height())
+
+	testando();
 	function testando() {
 		ipcRenderer.send('open', 600, 800);
 		ipcRenderer.send('openDevTools');
