@@ -99,17 +99,14 @@
 </body>
 
 <script>
-	minimize();
 	html.setItens();
+	let windowHeight = $('.content').height();
 
-	console.log($('body').height())
+	minimize(false);
 
-	//testando();
-	function testando() {
-		ipcRenderer.send('open', 600, 800);
-		ipcRenderer.send('openDevTools');
-	}
-	function minimize() {
+	function minimize(teste) {
+		if (teste)
+			return testando();
 		$('.content-body, .minimize').hide();
 		$('.content-icon').show();
 		ipcRenderer.send('close', 80, 70);
@@ -117,17 +114,8 @@
 	function maximize() {
 		$('.content-icon').hide();
 		$('.content-body, .minimize').show();
-		ipcRenderer.send('open', 240, 800);
+		ipcRenderer.send('open', 240, windowHeight); // 800
 	}
-	function devTools() {
-		ipcRenderer.send('openDevTools');
-	}
-
-	let win = {
-		min_width: 100,
-		max_width: 600,
-		open: false
-	};
 
 	function add() {
 		ipcRenderer.send('add');
@@ -148,18 +136,6 @@
 		});
 	}
 
-	function teste(width) {
-		width = !width ? (win.open ? win.max_width : win.min_width) : width;
-		console.log(width);
-		setTimeout(() => {
-			width = win.open ? width - 2 : width + 2;
-			ipcRenderer.send('resize', width, 800);
-			if (win.open && width != win.min_width) return teste(width);
-			if (!win.open && width != win.max_width) return teste(width);
-			win.open = !win.open;
-		});
-	}
-
 	function closeWindow() {
 		const window = remote.getCurrentWindow();
 		window.close();
@@ -174,6 +150,11 @@
 		const window = remote.getCurrentWindow();
 		if (window.isMaximized()) window.restore();
 		else window.maximize();
+	}
+
+	function testando() {
+		ipcRenderer.send('open', 600, 800);
+		ipcRenderer.send('openDevTools');
 	}
 </script>
 
